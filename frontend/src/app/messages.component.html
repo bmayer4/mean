@@ -1,0 +1,10 @@
+<div>
+    <button *ngIf='authService.currentUser?._id === userId' mat-raised-button color='primary' class='pb' routerLink='/post/new'>Add Post</button>
+    <div *ngFor='let message of apiService.messages'>
+      <mat-card>
+        {{ message.message }}
+        <button *ngIf='authService.currentUser?._id === userId' mat-button routerLink='/post/edit/{{message._id}}'>Edit</button>
+        <button *ngIf='authService.currentUser?._id === userId' mat-button (click)='deletePost(message._id)'>Delete</button>
+      </mat-card>
+    </div>
+</div>
